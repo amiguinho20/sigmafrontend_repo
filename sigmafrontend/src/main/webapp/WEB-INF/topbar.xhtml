@@ -1,0 +1,83 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
+
+    
+    <div id="layout-topbar" class="ShadowGray">
+    	<div id="layout-topbar-indent">
+        	<h:graphicImage name="images/LogoSigma40.png" styleClass="Fleft" library="fences" id="logo" style="margin-top:12px" />
+        	<a href="#" class="Fleft" style="margin-top:24px">
+        		<span class="ShowOnDesktop">
+	 	        	<h:outputText styleClass="fa fa-exclamation-triangle Fs16 softgray" style="padding-left: 10px"/>
+		        	<h:outputText styleClass="Fs16 softgray" value="Protótipo funcional" style="padding-left: 5px" />
+		        	<h:outputText styleClass="fa fa-exclamation-triangle Fs16 softgray" style="padding-left: 5px" />
+	        	</span>
+	        	<span class="ShowOnMobile">
+		        	<h:outputText styleClass="fa fa-exclamation-triangle Fs10 gray" style="padding-left: 10px" />
+		        	<h:outputText styleClass="Fs10 gray" value="Protótipo funcional" style="padding-left: 5px" />
+		        	<h:outputText styleClass="fa fa-exclamation-triangle Fs10 gray" style="padding-left: 5px" />
+	        	</span>
+        	</a>
+            <a href="#" id="mobile-menu-button" class="BordRad3 white ShowOnMobile"><i class="fa fa-bars"></i> Menu</a>
+            <a href="#" id="mobile-menu-button-gray" class="BordRad3 white ShowOnMobile"><i class="fa fa-caret-down"></i> Menu Superior</a>
+            <h:form id="formTopbar">
+            	<p:remoteCommand name="logout" actionListener="#{logoutMB.desautenticar()}" />
+            </h:form>
+            <ul id="layout-topbar-menu">
+            	<li>
+                	<a href="#" class="Animated05" onclick="logout();"><i class="fa fa-sign-out"></i> Sair</a>
+                </li>
+                <li class="fa fa-ellipsis-v menu-separator"></li>
+                <li>
+                	<a href="#" class="Animated05"><i class="fa fa-gear fa-spin"></i> Configurações</a>
+                </li>
+                <ui:remove>
+                <!--
+                <li class="fa fa-ellipsis-v menu-separator"></li>
+                <li>
+                	<a class="Animated05 CursPointer"><i class="fa fa-flag-checkered"></i> Language <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i></a>
+                    <ul style="width:150px; margin-left:-30px;" class="Animated03 submenu">
+                        <li><a href="#" class="Animated05"><i class="fa fa-flag red"></i> English</a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-flag red"></i> German</a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-flag red"></i> Portuguese</a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-flag red"></i> French</a></li>
+                    </ul>
+                </li>
+                <li class="fa fa-ellipsis-v menu-separator"></li>
+                <li>
+                	<a class="Animated05 CursPointer"><i class="fa fa-bell animated swing infinite red"></i> Messages <span class="notification-bubble BordRad3 animated rubberBand">24</span> <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i></a>
+                    <ul style="width:200px; margin-left:-45px;" class="Animated03 submenu">
+                    	<li><a href="#" class="Animated05"><i class="fa fa-envelope Fs18 blue"></i> <span class="Fright Fs16 TexAlRight">Brian Connely<span class="Fs10 DispBlock">Sales Reports</span></span></a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-envelope Fs18"></i> <span class="Fright Fs16 TexAlRight">Jack O'Neill<span class="Fs10 DispBlock">Last Meeting Notes</span></span></a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-envelope Fs18 blue"></i> <span class="Fright Fs16 TexAlRight">Tony Parker<span class="Fs10 DispBlock">Web Site Visitors</span></span></a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-envelope Fs18 red animated infinite rubberBand"></i> <span class="Fright Fs16 TexAlRight">Bob Ross<span class="Fs10 DispBlock">IK Reports</span></span></a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-envelope Fs18 orange"></i> <span class="Fright Fs16 TexAlRight">Sarah White<span class="Fs10 DispBlock">Marketing News</span></span></a></li>
+                    </ul>
+                </li>
+                 -->
+				</ui:remove>
+                <li class="fa fa-ellipsis-v menu-separator"></li>
+                <li>
+                	<a class="Animated05 CursPointer"><i class="fa fa-user"></i><h:outputText value=" #{usuarioLogadoMB.primeiroNome}" />, Bem-vindo <i class="fa fa-chevron-down Fs14 Fright ShowOnMobile"></i></a>
+                    <ul style="width:175px; margin-left:-10px;" class="Animated03 submenu">
+                    	<li><a class="Animated05"><i class="fa fa-user Fs30 Fleft"></i> <span class="Fright Fs20 TexAlRight"><h:outputText value=" #{usuarioLogadoMB.primeiroNome}" /><ui:remove><span class="Fs10 DispBlock">Último login 18:50</span></ui:remove></span></a></li>
+                    	<li><a href="#" class="Animated05"><i class="fa fa-dashboard"></i> Meu Perfil</a></li>
+                        <li><a href="#{baseURL}/modulo/configuracao/configuracaousuario.xhtml" class="Animated05"><i class="fa fa-magic"></i> Minhas Configurações</a></li>
+                        <ui:remove>
+                        <!-- 
+                        <li><a href="#" class="Animated05"><i class="fa fa-suitcase"></i> Tarefas <span class="notification-bubble BordRad3 Fright">24</span></a></li>
+                        <li><a href="#" class="Animated05"><i class="fa fa-quote-right"></i> Notificações <span class="notification-bubble BordRad3 Fright">18</span></a></li>
+                    	 -->
+                    	</ui:remove>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</ui:composition>
