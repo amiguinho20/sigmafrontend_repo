@@ -35,6 +35,7 @@ import br.com.fences.fencesutils.formatar.FormatarData;
 import br.com.fences.fencesutils.verificador.Verificador;
 import br.com.fences.ocorrenciaentidade.ocorrencia.Ocorrencia;
 import br.com.fences.ocorrenciaentidade.ocorrencia.natureza.Natureza;
+import br.com.fences.sigmafrontend.config.AppConfig;
 import br.com.fences.sigmafrontend.modulo.deic.divecar.roubocarga.enderecoavulso.EnderecoAvulsoBO;
 import br.com.fences.sigmafrontend.modulo.deic.divecar.roubocarga.ocorrencia.detalhe.FormatadorOcorrenciaMB;
 
@@ -48,6 +49,9 @@ public class PesquisaMB implements Serializable{
 	
 	@Inject
 	private transient Logger logger;
+	
+	@Inject
+	private AppConfig appConfig;
 
 	@Inject
 	private FiltroBO filtroBO;
@@ -88,6 +92,7 @@ public class PesquisaMB implements Serializable{
 	
 	@PostConstruct
 	private void init() {
+		filtroBO.init(appConfig.getServerBackendHost(), appConfig.getServerBackendPort());
 		setFiltroLista(filtroBO.listarFiltros());
 		pesquisar();
 		limparMapa();

@@ -20,8 +20,7 @@
 								<p:menuitem value="DEIC" url="#" disabled="true" />
 								<p:menuitem value="DIVECAR" url="#" disabled="true" />
 								<p:menuitem value="Roubo de carga e receptação" disabled="true" url="#" />
-								<p:menuitem value="Ocorrência" url="/modulo/roubocarga/ocorrencia.xhtml" rendered="#{indiciadoMB.origem == 'ocorrencia.xhtml'}" />
-								<p:menuitem value="Pesquisa de ocorrência" url="/modulo/roubocarga/pesquisa.xhtml" rendered="#{indiciadoMB.origem == 'pesquisa.xhtml'}" />
+								<p:menuitem value="Pesquisa de ocorrência" url="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaPesquisa()}" rendered="#{indiciadoMB.origem == 'pesquisa.xhtml'}" />
 								<p:menuitem value="Indiciado" url="#" disabled="true"/>
 							</p:breadCrumb>
 						</h:form>
@@ -190,9 +189,19 @@
 									<h:panelGroup>
 										<ui:repeat value="#{indiciado.ocorrencias.toArray()}" var="ocorrencia">
 										<p:commandLink
+											process="@this"
 											actionListener="#{ocorrenciaDetalheMB.atualizarOcorrenciaDetalheString(ocorrencia.id)}"
-											action="/modulo/roubocarga/ocorrenciadetalhe.xhtml"
-											value="#{ocorrencia.numBo}/#{ocorrencia.anoBo} - #{ocorrencia.nomeDelegacia}">
+											action="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaDetalhe()}"
+											value="#{ocorrencia.numBo}/#{ocorrencia.anoBo} - #{ocorrencia.nomeDelegacia}"
+											rendered="#{not usuarioConfigMB.abrirDetalheOcorrenciaEmJanelaSeparada}">
+											<f:setPropertyActionListener value="indiciado.xhtml" target="#{ocorrenciaDetalheMB.origemDetalhe}"/>
+										</p:commandLink>
+										<p:commandLink
+											process="@this"
+											actionListener="#{ocorrenciaDetalheMB.atualizarOcorrenciaDetalheString(ocorrencia.id)}"
+											onsuccess="window.open('#{baseURL}#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaDetalhe()}', 'ocorrencia.xhtml', '', true);"
+											value="#{ocorrencia.numBo}/#{ocorrencia.anoBo} - #{ocorrencia.nomeDelegacia}"
+											rendered="#{usuarioConfigMB.abrirDetalheOcorrenciaEmJanelaSeparada}">
 											<f:setPropertyActionListener value="indiciado.xhtml" target="#{ocorrenciaDetalheMB.origemDetalhe}"/>
 										</p:commandLink>
 										</ui:repeat>

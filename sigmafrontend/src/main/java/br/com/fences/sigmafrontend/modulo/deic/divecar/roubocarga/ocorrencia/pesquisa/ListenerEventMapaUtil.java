@@ -68,11 +68,12 @@ public class ListenerEventMapaUtil implements Serializable {
 					// logger.debug("A informacao da marca selecionada esta
 					// nula.");
 				} else if (marcaSelecionada.getData() instanceof Ocorrencia) {
-						Ocorrencia ocorrencia = (Ocorrencia) marcaSelecionada.getData();
+					Ocorrencia ocorrencia = (Ocorrencia) marcaSelecionada.getData();
 						// logger.info("Marca selecionada: " +
 						// formatadorOcorrenciaMB.formatarOcorrencia(ocorrencia)
 						// + formatadorOcorrenciaMB.formatarEndereco(ocorrencia));
-					
+				} else {
+					setPontoSelecionado(marcaSelecionada.getLatlng());
 				}
 			}
 		}

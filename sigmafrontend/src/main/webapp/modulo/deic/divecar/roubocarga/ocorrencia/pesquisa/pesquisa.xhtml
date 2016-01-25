@@ -14,7 +14,7 @@
 	<ui:define name="content">
 		<h:outputScript name="js/janelafilha.js" library="fences" />
 		<script>
-			janelaFilhaURL = "#{baseURL}modulo/roubocarga/mapaSozinho.xhtml";
+			janelaFilhaURL = "#{baseURL}#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaPesquisaMapasozinho()}";
 			janelaFilhaTitulo = "mapaSozinho";
 		</script>
 
@@ -264,7 +264,7 @@
 											value="#{pesquisaMB.filtroModelo}" filter="true"
 											filterMatchMode="contains">
 											<p:ajax process="filtroModelo" update="panelPesquisa" />
-											<f:selectItem itemLabel="" itemValue=""
+											<f:selectItem itemLabel="-- Selecione um filtro --" itemValue=""
 												noSelectionOption="true" />
 											<f:selectItems value="#{pesquisaMB.filtroLista}"
 												var="filtroModelo" itemValue="#{filtroModelo}"
@@ -536,7 +536,7 @@
 							<p:column style="width:120px;text-align:center">
 								<p:menuButton value="Opções">
 									<p:menuitem value="Boletim de ocorrência" icon="fa fa-file"
-										process="@this" action="ocorrenciadetalhe.xhtml"
+										process="@this" action="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaDetalhe()}"
 										rendered="#{not usuarioConfigMB.abrirDetalheOcorrenciaEmJanelaSeparada}">
 										<f:setPropertyActionListener value="#{ocorrencia}"
 											target="#{ocorrenciaDetalheMB.ocorrenciaDetalhe}" />
@@ -545,7 +545,7 @@
 									</p:menuitem>
 									<p:menuitem value="Boletim de ocorrência" icon="fa fa-file"
 										process="@this"
-										onsuccess="window.open('#{baseURL}modulo/roubocarga/ocorrenciadetalhe.xhtml', 'ocorrencia.xhtml', '', true);"
+										onsuccess="window.open('#{baseURL}#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaDetalhe()}', 'ocorrencia.xhtml', '', true);"
 										rendered="#{usuarioConfigMB.abrirDetalheOcorrenciaEmJanelaSeparada}">
 										<f:setPropertyActionListener value="#{ocorrencia}"
 											target="#{ocorrenciaDetalheMB.ocorrenciaDetalhe}" />
@@ -566,7 +566,7 @@
 								actionListener="#{indiciadoMB.pesquisar(pesquisaMB.ocorrenciasSelecionadas)}"
 								icon="fa fa-list Fs16 white" value="Listar indiciados"
 								process="listaDeOcorrenciasLazy @this"
-								action="indiciado/indiciado.xhtml">
+								action="#{navegacaoMB.getDeicDivecarRoubocargaIndiciado()}">
 								<f:setPropertyActionListener value="pesquisa.xhtml"
 									target="#{indiciadoMB.origem}" />
 							</p:commandButton>
@@ -595,7 +595,7 @@
 
 							<h:panelGroup layout="block"
 								rendered="#{not pesquisaMB.filtroMapa.exibirJanelaFilha}">
-								<ui:include src="mapa.xhtml">
+								<ui:include src="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaPesquisaMapa()}">
 									<ui:param name="style" value="width:100%;height:#{usuarioConfigMB.alturaDoMapa}" />
 									<ui:param name="nomeWidget" value="mapaWidget" />
 									<ui:param name="centroMapa" value="#{pesquisaMB.centroMapa}" />

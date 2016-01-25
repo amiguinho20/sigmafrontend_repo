@@ -15,7 +15,7 @@
 			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 	</f:facet>
-	<title>Vigilante</title>
+	<title>Σ Sigma | Plataforma</title>
 	<h:outputScript name="js/layout.js" library="spark-layout" />
 
 	<h:outputText value="&lt;!--[if gte IE 9]&gt;" escape="false" />
@@ -29,6 +29,17 @@
 
 
 	<ui:insert name="head" />
+	
+	<script>
+		//-- funcao workaround, pois o shiro na lida com requisicao ajax, e essa funcao forca o comportamento para requisicao nao ajax.
+		function startAjaxStatus() { 
+			document.getElementById("ajaxStatus_start").style.display='block'; 
+			document.getElementById("ajaxStatus_complete").style.display='none'; 
+			document.getElementById("ajaxStatus_error").style.display='none'; 
+			document.getElementById("ajaxStatus_default").style.display='none'; 
+		} 
+	</script>
+	
 </h:head>
 
 <h:body>
@@ -38,7 +49,7 @@
 			class="other-pages-box Container40 Responsive50 MarAuto Fnone TexAlCenter ShadowGray MarTop10"
 			style="margin-top:5%; background-image:url(#{baseURL}resources/spark-layout/images/loginpageillust.svg); background-repeat:no-repeat; background-position:center; background-size:cover;">
 			<div class="Container90 Fnone MarAuto TexAlCenter">
-				<o:form id="login" includeViewParams="true">
+				<o:form id="login" includeViewParams="true" onsubmit="startAjaxStatus()">
 
 					<div class="EmptyBox40"></div>
 					<h:graphicImage name="images/LogoSigma40.png" library="fences"
@@ -68,7 +79,7 @@
 					<div class="Container85 Fnone MarAuto softgray">
 						<div class="EmptyBox5"></div>
 						<p:selectBooleanCheckbox value="#{loginMB.remember}"
-							itemLabel="Permanecer logado" />
+							itemLabel="Permanecer logado" rendered="false"/>
 					</div>
 					<div class="EmptyBox30"></div>
 					<p:commandButton value="Entrar"
@@ -90,6 +101,20 @@
 			</div>
 		</div>
 	</div>
+	
+	<p:ajaxStatus id="ajaxStatus">
+		<f:facet name="start">
+			<div style="position:fixed; z-index: 2000; width: 100%; height: 100%;" class="ui-widget-overlay"></div>
+			<div style="width:32px;height:32px;position:fixed;right:7px;bottom:7px; z-index: 2001">
+				<p:graphicImage name="images/preloader.gif" library="spark-layout"/>
+			</div>
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+ 
 
 	<h:outputStylesheet name="css/core-layout.css" library="spark-layout" />
 	<h:outputStylesheet name="css/font-awesome.css" library="spark-layout" />

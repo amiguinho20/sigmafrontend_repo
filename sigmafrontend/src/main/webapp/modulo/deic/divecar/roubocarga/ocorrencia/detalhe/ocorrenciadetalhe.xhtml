@@ -47,27 +47,12 @@
 								<p:menuitem value="DIVECAR" url="#" disabled="true" />
 								<p:menuitem value="Roubo de carga e receptação" disabled="true" />
 								<p:menuitem value="Pesquisa de ocorrência"
-									url="/modulo/roubocarga/pesquisa.xhtml" />
+									url="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaPesquisa()}" />
 								<p:menuitem value="Indiciado"
-									url="/modulo/roubocarga/indiciado/indiciado.xhtml"
+									url="#{navegacaoMB.getDeicDivecarRoubocargaIndiciado()}"
 									rendered="#{ocorrenciaDetalheMB.origemDetalhe == 'indiciado.xhtml'}" />
 								<p:menuitem value="Boletim de ocorrência" disabled="true" />
 							</p:breadCrumb>
-
-							<p:breadCrumb
-								rendered="#{ocorrenciaDetalheMB.origemDetalhe == 'ocorrencia.xhtml'}">
-								<p:menuitem value="Home" url="#" disabled="true" />
-								<p:menuitem value="DEIC" url="#" disabled="true" />
-								<p:menuitem value="DIVECAR" url="#" disabled="true" />
-								<p:menuitem value="Roubo de carga e receptação" disabled="true" />
-								<p:menuitem value="Ocorrência"
-									url="/modulo/roubocarga/ocorrencia.xhtml" />
-								<p:menuitem value="Indiciado"
-									url="/modulo/roubocarga/indiciado/indiciado.xhtml"
-									rendered="#{ocorrenciaDetalheMB.origemDetalhe == 'indiciado.xhtml'}" />
-								<p:menuitem value="Boletim de ocorrência" disabled="true" />
-							</p:breadCrumb>
-
 							<p:breadCrumb
 								rendered="#{ocorrenciaDetalheMB.origemDetalhe == 'indiciado.xhtml'}">
 								<p:menuitem value="Home" url="#" disabled="true" />
@@ -75,15 +60,12 @@
 								<p:menuitem value="DIVECAR" url="#" disabled="true" />
 								<p:menuitem value="Roubo de carga e receptação" disabled="true" />
 
-								<p:menuitem value="Ocorrência"
-									url="/modulo/roubocarga/ocorrencia.xhtml"
-									rendered="#{indiciadoMB.origem == 'ocorrencia.xhtml'}" />
 								<p:menuitem value="Pesquisa de ocorrência"
-									url="/modulo/roubocarga/pesquisa.xhtml"
+									url="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaPesquisa()}"
 									rendered="#{indiciadoMB.origem == 'pesquisa.xhtml'}" />
 
 								<p:menuitem value="Indiciado"
-									url="/modulo/roubocarga/indiciado/indiciado.xhtml"
+									url="#{navegacaoMB.getDeicDivecarRoubocargaIndiciado()}"
 									rendered="#{ocorrenciaDetalheMB.origemDetalhe == 'indiciado.xhtml'}" />
 								<p:menuitem value="Boletim de ocorrência" disabled="true" />
 							</p:breadCrumb>

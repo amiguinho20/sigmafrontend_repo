@@ -24,37 +24,47 @@ public class NavegacaoMB {
 	private static final String DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_PESQUISA_MAPASOZINHO = "/modulo/deic/divecar/roubocarga/ocorrencia/pesquisa/mapaSozinho.xhtml";
 
 	
-	public static String getHome() {
+	public String getHome() {
 		return HOME;
 	}
-	public static String getLogin() {
+	public String getLogin() {
 		return LOGIN;
 	}
-	public static String getCadastrarUsuario() {
+	public String getCadastrarUsuario() {
 		return CADASTRAR_USUARIO;
 	}
-	public static String getCadastrarUsuarioSucesso() {
+	public String getCadastrarUsuarioSucesso() {
 		return CADASTRAR_USUARIO_SUCESSO;
 	}
-	public static String getDeicDivecarRoubocargaEnderecoavulso() {
+	public String getDeicDivecarRoubocargaEnderecoavulso() {
 		return DEIC_DIVECAR_ROUBOCARGA_ENDERECOAVULSO;
 	}
-	public static String getDeicDivecarRoubocargaEnderecoavulsoDetalhe() {
+	public String getDeicDivecarRoubocargaEnderecoavulsoDetalhe() {
 		return DEIC_DIVECAR_ROUBOCARGA_ENDERECOAVULSO_DETALHE;
 	}
-	public static String getDeicDivecarRoubocargaIndiciado() {
+	public String getDeicDivecarRoubocargaIndiciado() {
 		return DEIC_DIVECAR_ROUBOCARGA_INDICIADO;
 	}
-	public static String getDeicDivecarRoubocargaOcorrenciaDetalhe() {
+	public String getDeicDivecarRoubocargaOcorrenciaDetalhe() {
 		return DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_DETALHE;
 	}
-	public static String getDeicDivecarRoubocargaOcorrenciaPesquisa() {
+	public String getDeicDivecarRoubocargaOcorrenciaPesquisa() {
 		return DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_PESQUISA;
 	}
-	public static String getDeicDivecarRoubocargaOcorrenciaPesquisaMapa() {
+	public String getDeicDivecarRoubocargaOcorrenciaPesquisa(boolean relativo) {
+		if (relativo)
+		{
+			return DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_PESQUISA.substring(1);
+		}
+		else
+		{
+			return DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_PESQUISA;
+		}
+	}
+	public String getDeicDivecarRoubocargaOcorrenciaPesquisaMapa() {
 		return DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_PESQUISA_MAPA;
 	}
-	public static String getDeicDivecarRoubocargaOcorrenciaPesquisaMapasozinho() {
+	public String getDeicDivecarRoubocargaOcorrenciaPesquisaMapasozinho() {
 		return DEIC_DIVECAR_ROUBOCARGA_OCORRENCIA_PESQUISA_MAPASOZINHO;
 	}
 

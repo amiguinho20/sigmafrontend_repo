@@ -102,7 +102,7 @@ public class ConfiguracaoDaAplicacaoContextListener implements ServletContextLis
 	        {
 		        Appender appender = null;
 		        try {
-					appender = new DailyRollingFileAppender(patternLayout, logDiretorio + "/deicdivecarfrontend.log", "'.'yyyy-MM-dd'.log'");
+					appender = new DailyRollingFileAppender(patternLayout, logDiretorio + "/sigmafrontend.log", "'.'yyyy-MM-dd'.log'");
 					rootLogger.addAppender(appender);  
 		        } catch (IOException e) {
 		        	throw new RuntimeException("Erro na inicializacao do DailyRollingFileAppender", e);

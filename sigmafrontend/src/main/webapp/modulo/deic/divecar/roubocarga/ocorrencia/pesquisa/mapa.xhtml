@@ -49,7 +49,7 @@
 						<p:menuButton value="Opções"
 							rendered="#{not filtroMapa.exibirJanelaFilha}">
 							<p:menuitem value="Boletim de ocorrência" icon="fa fa-file"
-								action="ocorrenciadetalhe.xhtml"
+								action="#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaDetalhe()}"
 								rendered="#{not usuarioConfigMB.abrirDetalheOcorrenciaEmJanelaSeparada}">
 								<f:setPropertyActionListener
 									value="#{listenerEventMapaUtil.marcaSelecionada.data}"
@@ -58,7 +58,7 @@
 									target="#{ocorrenciaDetalheMB.origemDetalhe}" />
 							</p:menuitem>
 							<p:menuitem value="Boletim de ocorrência" icon="fa fa-file"
-								onsuccess="window.open('#{baseURL}modulo/roubocarga/ocorrenciadetalhe.xhtml', 'ocorrencia.xhtml', '', true);"
+								onsuccess="window.open('#{baseURL}#{navegacaoMB.getDeicDivecarRoubocargaOcorrenciaDetalhe()}', 'ocorrencia.xhtml', '', true);"
 								rendered="#{usuarioConfigMB.abrirDetalheOcorrenciaEmJanelaSeparada}">
 								<f:setPropertyActionListener
 									value="#{listenerEventMapaUtil.marcaSelecionada.data}"
